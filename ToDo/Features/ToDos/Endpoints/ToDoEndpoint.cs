@@ -7,6 +7,7 @@ using ToDo.Features.ToDos.DTO;
 using ToDo.Features.ToDos.Services;
 using FluentValidation;
 using ToDo.Extensions;
+using Microsoft.AspNetCore.Authorization;
 namespace ToDo.Features.ToDos.Endpoints
 {
     public class ToDoEndpoint : IApiEndpoint
@@ -30,11 +31,11 @@ namespace ToDo.Features.ToDos.Endpoints
                 .WithSummary("Get all ToDo items")
                 .WithDescription("Get all ToDo items.")
                 .Produces<List<ToDoView>>(StatusCodes.Status200OK);
-            ToDoProcess.MapGet("/{id:int}", async (IToDoServices _services, int id) =>
+            ToDoProcess.MapGet("/{username}", async (IToDoServices _services, string username) =>
             {
                 try
                 {
-                    var toDoViews = await _services.GetToDoAsync(id);
+                    var toDoViews = await _services.GetToDoAsync(username);
                     return Results.Ok(toDoViews);
                 }
                 catch (Exception ex)
@@ -43,8 +44,9 @@ namespace ToDo.Features.ToDos.Endpoints
                 }
             })
                 .WithName("GetToDo")
-                .WithSummary("Get ToDo item by ID")
-                .WithDescription("Get a ToDo item by its unique ID.")
+                .WithSummary("Get ToDo item by username")
+                .WithDescription("Get a ToDo item by owner.")
+                .RequireAuthorization("SameUsernamePolicy")
                 .Produces<ToDoView>(StatusCodes.Status200OK);
             ToDoProcess.MapPost("/", async (IToDoServices _services, [FromBody] ToDoCreateDTO toDoCreateDTO) =>
             {

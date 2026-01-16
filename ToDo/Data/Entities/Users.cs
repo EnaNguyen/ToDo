@@ -1,4 +1,6 @@
-﻿namespace ToDo.Data.Entities
+﻿using EcommercialAPI.Data.Entities;
+using ToDo.Data.Entities;
+namespace ToDo.Data.Entities
 {
     public class Users
     {
@@ -12,5 +14,6 @@
         public bool TwoFA { get; set; } = false;
         public string SecretKey { get; set; } = string.Empty;
         public ICollection<ToDo>? ToDos { get; set; } = new List<ToDo>();
+        public ICollection<RefreshToken> refreshToken { get; set; } = new List<RefreshToken>();
     }
 }

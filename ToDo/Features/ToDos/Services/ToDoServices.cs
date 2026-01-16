@@ -53,10 +53,11 @@ namespace ToDo.Features.ToDos.Services
             }
         }
 
-        public async Task<ToDoView> GetToDoAsync(int id)
+        public async Task<List<ToDoView>> GetToDoAsync(string username)
         {
-            var toDoItems = _context.ToDoItems.Include(t => t.User).FirstOrDefault(g=>g.Id==id);
-            ToDoView toDoView = _mapper.Map<ToDoView>(toDoItems);
+            var user =  _context.Users.FirstOrDefault(g => g.Username == username);
+            var listToDo = _context.ToDoItems.Include(g => g.User).Where(h => h.UserId == user.Id);
+            List<ToDoView> toDoView = _mapper.Map<List<ToDoView>>(listToDo);
             return toDoView;
         }
         public async Task<ToDoView> UpdateToDoAsync([FromBody] ToDoUpdateDTO toDoUpdateDTO, int id)

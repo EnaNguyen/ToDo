@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EcommercialAPI.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 namespace ToDo.Data.Entities
 {
@@ -13,6 +14,7 @@ namespace ToDo.Data.Entities
         }
         public virtual DbSet<ToDo> ToDoItems { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -33,7 +35,13 @@ namespace ToDo.Data.Entities
                 entity.HasKey(e => e.Id);
                 entity.Property(p => p.Id).ValueGeneratedOnAdd();
             });
-
+            modelBuilder.Entity<RefreshToken>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.HasOne(d => d.User).WithMany(p => p.refreshToken)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
 
 

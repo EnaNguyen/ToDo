@@ -46,16 +46,5 @@ namespace ToDo.Features.Users.Validators
             RuleFor(x => x.TwoFA)
                 .NotNull().WithMessage("TwoFA status is required.");
         }
-    }  
-    public class UserChangePassValidation : AbstractValidator<UserChangePasswordDTO>
-    {
-        public UserChangePassValidation()
-        {
-            RuleFor(x => x.NewPassword)
-                .NotEmpty().WithMessage("Password is required.")
-                .MinimumLength(6).WithMessage("Password must be at least 6 characters long.");
-            RuleFor(x => x.NewPasswordConfirm)
-                .Equal(x => x.NewPassword).WithMessage("Password confirmation does not match the password.");
-        }
-    }
+    }   
 }
