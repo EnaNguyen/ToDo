@@ -1,0 +1,461 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\todos\\endpoints\\todoendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\todos\\endpoints\\todoendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\users\\endpoints\\userendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\users\\endpoints\\userendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\todos\\services\\todoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\todos\\services\\todoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\users\\services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\users\\services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\extensions\\iapiendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\extensions\\iapiendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\users\\services\\iuserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\users\\services\\iuserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\todos\\services\\itodoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\todos\\services\\itodoservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\users\\validators\\uservalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\users\\validators\\uservalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\users\\dto\\userchangepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\users\\dto\\userchangepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\users\\dto\\userupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\users\\dto\\userupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\users\\dto\\usercreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\users\\dto\\usercreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\todos\\validators\\todovalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\todos\\validators\\todovalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\users\\mappings\\usermappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\users\\mappings\\usermappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\users\\dto\\userview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\users\\dto\\userview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\data\\entities\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\data\\entities\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Migrations\\20260116033213_DLSS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ToDo\\Migrations\\20260116033213_DLSS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\todos\\mappings\\todomappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\todos\\mappings\\todomappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\todos\\dto\\todoview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\todos\\dto\\todoview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\extensions\\endpointextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\extensions\\endpointextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\todos\\dto\\todocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\todos\\dto\\todocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\features\\todos\\dto\\todoupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\features\\todos\\dto\\todoupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|c:\\users\\enanguyen\\source\\repos\\todo\\todo\\data\\entities\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B8F0A69-81BA-D73E-3588-43EDF31BA110}|ToDo\\ToDo.csproj|solutionrelative:todo\\data\\entities\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Migrations\\20260115082558_DLSS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ToDo\\Migrations\\20260115082558_DLSS.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserChangePasswordDTO.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\DTO\\UserChangePasswordDTO.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\Users\\DTO\\UserChangePasswordDTO.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\DTO\\UserChangePasswordDTO.cs",
+              "RelativeToolTip": "ToDo\\Features\\Users\\DTO\\UserChangePasswordDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T03:33:10.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20260116033213_DLSS.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Migrations\\20260116033213_DLSS.cs",
+              "RelativeDocumentMoniker": "ToDo\\Migrations\\20260116033213_DLSS.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Migrations\\20260116033213_DLSS.cs",
+              "RelativeToolTip": "ToDo\\Migrations\\20260116033213_DLSS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T03:32:13.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserValidation.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Validators\\UserValidation.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\Users\\Validators\\UserValidation.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Validators\\UserValidation.cs",
+              "RelativeToolTip": "ToDo\\Features\\Users\\Validators\\UserValidation.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAowDUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:56:40.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserServices.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Services\\UserServices.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\Users\\Services\\UserServices.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Services\\UserServices.cs",
+              "RelativeToolTip": "ToDo\\Features\\Users\\Services\\UserServices.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:56:21.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IUserServices.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Services\\IUserServices.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\Users\\Services\\IUserServices.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Services\\IUserServices.cs",
+              "RelativeToolTip": "ToDo\\Features\\Users\\Services\\IUserServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:56:13.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UserMappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Mappings\\UserMappingProfile.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\Users\\Mappings\\UserMappingProfile.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Mappings\\UserMappingProfile.cs",
+              "RelativeToolTip": "ToDo\\Features\\Users\\Mappings\\UserMappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:55:50.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Endpoints\\UserEndpoint.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\Users\\Endpoints\\UserEndpoint.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\Endpoints\\UserEndpoint.cs*",
+              "RelativeToolTip": "ToDo\\Features\\Users\\Endpoints\\UserEndpoint.cs*",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAQwBoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:55:34.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\DTO\\UserUpdateDTO.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\Users\\DTO\\UserUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\DTO\\UserUpdateDTO.cs",
+              "RelativeToolTip": "ToDo\\Features\\Users\\DTO\\UserUpdateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:53:25.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\DTO\\UserCreateDTO.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\Users\\DTO\\UserCreateDTO.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\DTO\\UserCreateDTO.cs",
+              "RelativeToolTip": "ToDo\\Features\\Users\\DTO\\UserCreateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:53:03.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserView.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\DTO\\UserView.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\Users\\DTO\\UserView.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\Users\\DTO\\UserView.cs",
+              "RelativeToolTip": "ToDo\\Features\\Users\\DTO\\UserView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:52:52.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IApiEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Extensions\\IApiEndpoint.cs",
+              "RelativeDocumentMoniker": "ToDo\\Extensions\\IApiEndpoint.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Extensions\\IApiEndpoint.cs",
+              "RelativeToolTip": "ToDo\\Extensions\\IApiEndpoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:36:56.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "EndpointExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Extensions\\EndpointExtensions.cs",
+              "RelativeDocumentMoniker": "ToDo\\Extensions\\EndpointExtensions.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Extensions\\EndpointExtensions.cs",
+              "RelativeToolTip": "ToDo\\Extensions\\EndpointExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:35:51.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ToDoEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Endpoints\\ToDoEndpoint.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\ToDos\\Endpoints\\ToDoEndpoint.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Endpoints\\ToDoEndpoint.cs",
+              "RelativeToolTip": "ToDo\\Features\\ToDos\\Endpoints\\ToDoEndpoint.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCEAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:26:57.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ToDoServices.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Services\\ToDoServices.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\ToDos\\Services\\ToDoServices.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Services\\ToDoServices.cs",
+              "RelativeToolTip": "ToDo\\Features\\ToDos\\Services\\ToDoServices.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T10:01:04.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IToDoServices.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Services\\IToDoServices.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\ToDos\\Services\\IToDoServices.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Services\\IToDoServices.cs",
+              "RelativeToolTip": "ToDo\\Features\\ToDos\\Services\\IToDoServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T10:00:33.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ToDoValidation.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Validators\\ToDoValidation.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\ToDos\\Validators\\ToDoValidation.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Validators\\ToDoValidation.cs",
+              "RelativeToolTip": "ToDo\\Features\\ToDos\\Validators\\ToDoValidation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T09:01:32.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "20260115082558_DLSS.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Migrations\\20260115082558_DLSS.cs",
+              "RelativeDocumentMoniker": "ToDo\\Migrations\\20260115082558_DLSS.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Migrations\\20260115082558_DLSS.cs",
+              "RelativeToolTip": "ToDo\\Migrations\\20260115082558_DLSS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T08:25:58.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ToDoView.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\DTO\\ToDoView.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\ToDos\\DTO\\ToDoView.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\DTO\\ToDoView.cs",
+              "RelativeToolTip": "ToDo\\Features\\ToDos\\DTO\\ToDoView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T08:10:42.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ToDoUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\DTO\\ToDoUpdateDTO.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\ToDos\\DTO\\ToDoUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\DTO\\ToDoUpdateDTO.cs",
+              "RelativeToolTip": "ToDo\\Features\\ToDos\\DTO\\ToDoUpdateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T08:10:10.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ToDoCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\DTO\\ToDoCreateDTO.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\ToDos\\DTO\\ToDoCreateDTO.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\DTO\\ToDoCreateDTO.cs",
+              "RelativeToolTip": "ToDo\\Features\\ToDos\\DTO\\ToDoCreateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T08:09:44.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Data\\Entities\\Users.cs",
+              "RelativeDocumentMoniker": "ToDo\\Data\\Entities\\Users.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Data\\Entities\\Users.cs",
+              "RelativeToolTip": "ToDo\\Data\\Entities\\Users.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T08:09:21.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ToDo.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Data\\Entities\\ToDo.cs",
+              "RelativeDocumentMoniker": "ToDo\\Data\\Entities\\ToDo.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Data\\Entities\\ToDo.cs",
+              "RelativeToolTip": "ToDo\\Data\\Entities\\ToDo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T08:09:07.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "ToDo\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "ToDo\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAArwDEAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T07:52:22.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ToDoMappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Mappings\\ToDoMappingProfile.cs",
+              "RelativeDocumentMoniker": "ToDo\\Features\\ToDos\\Mappings\\ToDoMappingProfile.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Features\\ToDos\\Mappings\\ToDoMappingProfile.cs",
+              "RelativeToolTip": "ToDo\\Features\\ToDos\\Mappings\\ToDoMappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T07:48:49.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\appsettings.json",
+              "RelativeDocumentMoniker": "ToDo\\appsettings.json",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\appsettings.json",
+              "RelativeToolTip": "ToDo\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-15T07:24:02.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Program.cs",
+              "RelativeDocumentMoniker": "ToDo\\Program.cs",
+              "ToolTip": "C:\\Users\\EnaNguyen\\source\\repos\\ToDo\\ToDo\\Program.cs",
+              "RelativeToolTip": "ToDo\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAUwB0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T07:15:39.822Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

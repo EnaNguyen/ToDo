@@ -1,0 +1,183 @@
+[
+  {
+    "ContainingType": "ToDo.Features.ToDos.Endpoints.ToDoEndpoint\u002B\u003C\u003Ec",
+    "Method": "\u003CMapEndpoints\u003Eb__0_0",
+    "RelativePath": "api/ToDo/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ToDo.Features.ToDos.DTO.ToDoView, ToDo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "ToDo"
+    ],
+    "EndpointName": "GetToDoList",
+    "Description": "Get all ToDo items.",
+    "Summary": "Get all ToDo items"
+  },
+  {
+    "ContainingType": "ToDo.Features.ToDos.Endpoints.ToDoEndpoint\u002B\u003C\u003Ec",
+    "Method": "\u003CMapEndpoints\u003Eb__0_2",
+    "RelativePath": "api/ToDo/",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "toDoCreateDTO",
+        "Type": "ToDo.Features.ToDos.DTO.ToDoCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ToDo.Data.Entities.ToDo",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      }
+    ],
+    "Tags": [
+      "ToDo"
+    ],
+    "EndpointName": "CreateToDo",
+    "Description": "Creates a new ToDo item with the provided details.",
+    "Summary": "Create a new ToDo item"
+  },
+  {
+    "ContainingType": "ToDo.Features.ToDos.Endpoints.ToDoEndpoint\u002B\u003C\u003Ec",
+    "Method": "\u003CMapEndpoints\u003Eb__0_1",
+    "RelativePath": "api/ToDo/{id:int}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ToDo.Features.ToDos.DTO.ToDoView",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "ToDo"
+    ],
+    "EndpointName": "GetToDo",
+    "Description": "Get a ToDo item by its unique ID.",
+    "Summary": "Get ToDo item by ID"
+  },
+  {
+    "ContainingType": "ToDo.Features.ToDos.Endpoints.ToDoEndpoint\u002B\u003C\u003Ec",
+    "Method": "\u003CMapEndpoints\u003Eb__0_3",
+    "RelativePath": "api/ToDo/{id:int}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "toDoUpdateDTO",
+        "Type": "ToDo.Features.ToDos.DTO.ToDoUpdateDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ToDo.Data.Entities.ToDo",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "ToDo"
+    ],
+    "EndpointName": "UpdateToDo",
+    "Description": "Update ToDo by Id",
+    "Summary": "Update ToDo"
+  },
+  {
+    "ContainingType": "ToDo.Features.ToDos.Endpoints.ToDoEndpoint\u002B\u003C\u003Ec",
+    "Method": "\u003CMapEndpoints\u003Eb__0_4",
+    "RelativePath": "api/ToDo/{id:int}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "ToDo"
+    ],
+    "EndpointName": "DeleteToDo",
+    "Description": "Permanently removes a ToDo item.",
+    "Summary": "Delete a ToDo item by ID"
+  },
+  {
+    "ContainingType": "ToDo.Features.Users.Endpoints.UserEndpoint\u002B\u003C\u003Ec",
+    "Method": "\u003CMapEndpoints\u003Eb__0_0",
+    "RelativePath": "api/user/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ToDo.Features.Users.DTO.UserView, ToDo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "User"
+    ],
+    "EndpointName": "GetUserList",
+    "Description": "Get all users.",
+    "Summary": "Get all users"
+  }
+]
