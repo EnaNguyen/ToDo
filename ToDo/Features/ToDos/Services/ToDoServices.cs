@@ -35,7 +35,6 @@ namespace ToDo.Features.ToDos.Services
             {
                 throw new ValidationException(validationResult.Errors);
             }
-            using var transaction = _context.Database.BeginTransaction();
             try
             {
                 Data.Entities.ToDo toDoEntity = _mapper.Map<Data.Entities.ToDo>(toDoCreateDTO);
@@ -43,12 +42,10 @@ namespace ToDo.Features.ToDos.Services
                 toDoEntity.IsCompleted = false;
                 _context.ToDoItems.Add(toDoEntity);
                 await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
                 return _mapper.Map<ToDoView>(toDoEntity);
             }
             catch (Exception ex)
             {
-                await transaction.RollbackAsync();
                 throw new ValidationException(ex.Message);
             }
         }
@@ -67,43 +64,37 @@ namespace ToDo.Features.ToDos.Services
             {
                 throw new ValidationException("ToDo item not found.");
             }
-            using var transaction = _context.Database.BeginTransaction();
             try
             {
                 _mapper.Map(toDoUpdateDTO, toDoEntity);
                 _context.ToDoItems.Update(toDoEntity);
                 await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
                 return _mapper.Map<ToDoView>(toDoEntity);
             }
             catch(Exception ex)
             {
-                await transaction.RollbackAsync();
                 throw new ValidationException(ex.Message);
             }
         }
 
         public async Task RemoveToDoAsync(int id)
         {
-            await using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
                 var toDoRemove = await _context.ToDoItems
                     .FirstOrDefaultAsync(g => g.Id == id);
                 if (toDoRemove == null)
                 {
-                    throw new KeyNotFoundException($"ToDo item not found.");
+                    throw new KeyNotFoundException("ToDo item not found.");
                     
                 }
 
                 _context.ToDoItems.Remove(toDoRemove);
                 await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
             }
-            catch
+            catch(Exception ex)
             {
-                await transaction.RollbackAsync();
-                throw;  
+                throw new Exception("Can't remove this item");  
             }
         }
     }
