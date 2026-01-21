@@ -80,6 +80,32 @@ builder.Services.AddAuthorization(options =>
         policy.AddRequirements(new SameUsernameRequirement());
     });
 });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", corsBuilder =>
+    {
+        if (builder.Environment.IsDevelopment())
+        {
+            corsBuilder
+                .SetIsOriginAllowed(origin => origin.Contains("localhost"))
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+        }
+        else
+        {
+            corsBuilder
+                .WithOrigins(
+                    "https://fashionhub.name.vn",
+                    "https://admin.your-production-domain.com",
+                    "http://localhost:4200"
+                )
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+        }
+    });
+});
 builder.Services.AddScoped<IAuthorizationHandler, SameUsernameAuthorizationHandler>();
 builder.Services.AddScoped<IToDoServices, ToDoServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
@@ -100,6 +126,7 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
     app.MapOpenApi();
 }
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();   
 app.UseAuthorization();

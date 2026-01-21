@@ -6,7 +6,7 @@ namespace ToDo.Features.ToDos.Mappings
     {
         public ToDoMappingProfile()
         {
-            CreateMap<Data.Entities.ToDo, ToDoView>().ForMember(u => u.Username, n => n.MapFrom( a => a.User.Username)).ReverseMap();
+            CreateMap<Data.Entities.ToDo, ToDoView>().ForMember(u => u.FullName, n => n.MapFrom( a => a.User.FullName)).ReverseMap();
             CreateMap<Data.Entities.ToDo, ToDoCreateDTO>().ReverseMap();
             CreateMap<Data.Entities.ToDo, ToDoUpdateDTO>().ReverseMap();
         }

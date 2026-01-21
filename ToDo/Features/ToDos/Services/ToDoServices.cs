@@ -39,10 +39,11 @@ namespace ToDo.Features.ToDos.Services
             {
                 Data.Entities.ToDo toDoEntity = _mapper.Map<Data.Entities.ToDo>(toDoCreateDTO);
                 toDoEntity.CreatedAt = DateTime.Now;
-                toDoEntity.IsCompleted = false;
+                toDoEntity.IsCompleted = false;               
                 _context.ToDoItems.Add(toDoEntity);
                 await _context.SaveChangesAsync();
-                return _mapper.Map<ToDoView>(toDoEntity);
+                var newToDo = _context.ToDoItems.Include(h => h.User).FirstOrDefault(g => g.Id == toDoEntity.Id);
+                return _mapper.Map<ToDoView>(newToDo);
             }
             catch (Exception ex)
             {
@@ -57,9 +58,9 @@ namespace ToDo.Features.ToDos.Services
             List<ToDoView> toDoView = _mapper.Map<List<ToDoView>>(listToDo);
             return toDoView;
         }
-        public async Task<ToDoView> UpdateToDoAsync([FromBody] ToDoUpdateDTO toDoUpdateDTO, int id)
+        public async Task<ToDoView> UpdateToDoAsync([FromBody] ToDoUpdateDTO toDoUpdateDTO)
         {
-            var toDoEntity =  _context.ToDoItems.FirstOrDefault(g=>g.Id==id);
+            var toDoEntity =  _context.ToDoItems.Include(h=>h.User).FirstOrDefault(g=>g.Id==toDoUpdateDTO.Id);
             if (toDoEntity == null)
             {
                 throw new ValidationException("ToDo item not found.");

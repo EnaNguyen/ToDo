@@ -7,7 +7,7 @@ namespace ToDo.Features.ToDos.Services
         Task<List<ToDoView>> GetAllToDosAsync();
         Task<List<ToDoView>> GetToDoAsync(string username);
         Task<ToDoView> CreateToDoAsync([FromBody] ToDoCreateDTO toDoCreateDTO);
-        Task<ToDoView> UpdateToDoAsync([FromBody] ToDoUpdateDTO toDoUpdateDTO, int id);
+        Task<ToDoView> UpdateToDoAsync([FromBody] ToDoUpdateDTO toDoUpdateDTO);
         Task RemoveToDoAsync(int id);
     }
 }

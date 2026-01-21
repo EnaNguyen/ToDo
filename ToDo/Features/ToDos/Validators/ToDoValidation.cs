@@ -34,7 +34,7 @@ namespace ToDo.Features.ToDos.Validators
             RuleFor(x => x.DueDate)
                 .GreaterThan(DateTime.Now).When(x => x.DueDate.HasValue)
                 .WithMessage("DueDate must be later than right now");
-            RuleFor(x => x.UserId)
+            RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("UserId is required.")
                 .GreaterThan(0).WithMessage("UserId must be a positive integer.");
         }

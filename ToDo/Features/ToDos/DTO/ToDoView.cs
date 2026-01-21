@@ -10,6 +10,6 @@ namespace ToDo.Features.ToDos.DTO
         public bool IsCompleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? DueDate { get; set; }
-        public string Username { get; set; } = string.Empty;
+        public string FullName { get; set; } = string.Empty;
     }
 }
