@@ -15,7 +15,7 @@ namespace ToDo.Features.Users.Endpoints
                 {
                     var users = await _services.GetAllUsersAsync();
                     return Results.Ok(users);
-                }
+                } 
                 catch (Exception ex)
                 {
                     return Results.Problem(ex.Message);
@@ -25,6 +25,18 @@ namespace ToDo.Features.Users.Endpoints
                 .WithSummary("Get all users")
                 .WithDescription("Get all users.")
                 .Produces<List<UserView>>(StatusCodes.Status200OK);
+            userProcess.MapGet("/{username}", async (IUserServices _service, string username) =>
+            {
+                try
+                {
+                    var user = await _service.GetUserByUsernameAsync(username);
+                    return Results.Ok(user);
+                }
+                catch(Exception ex)
+                {
+                    return Results.Problem(ex.Message);
+                }
+            });
         }
     }
 }

@@ -10,6 +10,7 @@ using ToDo.Helpers.OTPs;
 using ToDo.Helpers.Tokens;
 using ToDo.Features.Logins.DTO;
 using static System.Net.WebRequestMethods;
+
 namespace ToDo.Features.Logins.Services
 {
 
@@ -19,7 +20,7 @@ namespace ToDo.Features.Logins.Services
         private readonly IEmailServices _emailServices;
         private readonly ITokenServices _tokenServices;
         private readonly IOTPServices _otpServices;
-        public AuthenticationServices(ApplicationDbContext context, IEmailServices emailServices, ITokenServices tokenServices, IOTPServices otpServices)
+       public AuthenticationServices(ApplicationDbContext context, IEmailServices emailServices, ITokenServices tokenServices, IOTPServices otpServices)
         {
             _context = context;
             _emailServices = emailServices;
@@ -33,6 +34,12 @@ namespace ToDo.Features.Logins.Services
                 var userAttempLogin = _context.Users.FirstOrDefault(p => p.Username == username || p.Email == username);
                 if (userAttempLogin != null)
                 {
+                    if(userAttempLogin.Password!=HashCode(password))
+                        return new LoginResponse
+                        {
+                            Message = "Login Failed",
+                            Result = 0
+                        };
                     if (userAttempLogin.TwoFA == true)
                     {
                         if (string.IsNullOrWhiteSpace(userAttempLogin.SecretKey))
@@ -47,10 +54,12 @@ namespace ToDo.Features.Logins.Services
                         return new LoginResponse
                         {
                             Message = "OTP has been sent, please check our email",
+                            UserId = userAttempLogin.Id,
                             Result = 2
                         };
                     }
                     var token = await _tokenServices.GenerateBothTokensAsync(userAttempLogin.Id, userAttempLogin.Username, userAttempLogin.Role);
+                    _tokenServices.SetTokenInCookie(token);
                     return new LoginResponse
                     {
                         Message = "Login Successfully",
@@ -58,8 +67,6 @@ namespace ToDo.Features.Logins.Services
                         FullName = userAttempLogin.FullName,
                         Username = userAttempLogin.Username,
                         Role = userAttempLogin.Role,
-                        AccessToken = token.AccessToken,
-                        RefreshToken = token.RefreshToken,
                         Result = 1
                     };
                 }
@@ -92,7 +99,6 @@ namespace ToDo.Features.Logins.Services
         public string GenerateOtp()
         {
             return new Random().Next(100000, 999999).ToString();
-        }
-
+        }     
     }
 }

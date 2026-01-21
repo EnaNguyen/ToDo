@@ -33,7 +33,7 @@ public class LoginEndpoint : IApiEndpoint
             .WithSummary("User Login")
             .WithDescription("User Login")
             .Produces<ToDo.Features.Logins.DTO.LoginResponse>(StatusCodes.Status200OK);
-        loginProcess.MapPost("/OtpVerify", async (IOTPServices _otpServices, [FromBody] OTPInput otpInput, ITokenServices _tokenServices) =>
+        loginProcess.MapPost("/otp-verify", async (IOTPServices _otpServices, [FromBody] OTPInput otpInput, ITokenServices _tokenServices) =>
         {
             try
             {

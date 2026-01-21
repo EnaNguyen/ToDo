@@ -1,5 +1,4 @@
 ﻿using ToDo.Features.Logins.DTO;
-
 namespace ToDo.Features.Logins.Services
 {
     public interface IAuthenticationServices

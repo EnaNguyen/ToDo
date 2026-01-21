@@ -14,8 +14,14 @@ namespace ToDo.Features.Users.Services
         }
         public async Task<List<UserView>> GetAllUsersAsync()
         {
-            var _users = _context.Users.ToList();
-            return _mapper.Map<List<UserView>>(_users);
+            var users = _context.Users.ToList();
+            return _mapper.Map<List<UserView>>(users);
+        }
+
+        public async Task<UserView> GetUserByUsernameAsync(string username)
+        {
+            var user = _context.Users.FirstOrDefault(g => g.Username == username);
+            return _mapper.Map<UserView>(user);
         }
     }
 }

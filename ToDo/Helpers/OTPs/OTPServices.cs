@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OtpNet;
 using ToDo.Data.Entities;
 using ToDo.Features.Logins.DTO;
+using ToDo.Features.Logins.Services;
 using ToDo.Helpers.Tokens;
 
 namespace ToDo.Helpers.OTPs
@@ -12,7 +13,6 @@ namespace ToDo.Helpers.OTPs
         private readonly ApplicationDbContext _context;
         private readonly IDataProtector _protector;
         private readonly ITokenServices _tokenServices;
-
         public OTPServices(ApplicationDbContext context, IDataProtectionProvider provider, ITokenServices tokenServices)
         {
             _context = context;
@@ -76,7 +76,9 @@ namespace ToDo.Helpers.OTPs
             );
             if (verified)
             {
-               return await _tokenServices.GenerateBothTokensAsync(user.Id, user.Username, user.Role);
+                var TokenGen = await _tokenServices.GenerateBothTokensAsync(user.Id, user.Username, user.Role);
+                _tokenServices.SetTokenInCookie(TokenGen);
+                return TokenGen;
             }
             else
             {

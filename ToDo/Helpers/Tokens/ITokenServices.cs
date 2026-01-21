@@ -7,5 +7,6 @@ namespace ToDo.Helpers.Tokens
         Task<string> GenerateRefreshTokenAsync(int userId);
         Task<string?> ValidateAndRefreshTokenAsync(string refreshToken);
         Task<TokenString> GenerateBothTokensAsync(int userId, string username, string role);
+        public void SetTokenInCookie(TokenString token);
     }
 }

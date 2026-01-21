@@ -13,10 +13,12 @@ namespace ToDo.Helpers.Tokens
     {
         private readonly IConfiguration _configuration;
         private readonly ApplicationDbContext _context;
-        public TokenServices(IConfiguration configuration, ApplicationDbContext context)
+        private readonly IHttpContextAccessor _http;
+        public TokenServices(IConfiguration configuration, ApplicationDbContext context, IHttpContextAccessor http) 
         {
             _configuration = configuration;
             _context = context;
+            _http = http;
         }
         public string GenerateAccessToken(int userId, string username, string role)
         {
@@ -77,6 +79,31 @@ namespace ToDo.Helpers.Tokens
                 AccessToken = accessToken,
                 RefreshToken = refreshToken
             };
+        }
+        public void SetTokenInCookie(TokenString token)
+        {
+            var response = _http.HttpContext?.Response;
+            if (response == null) return;
+
+            response.Cookies.Append("AccessToken", token.AccessToken ?? "", new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Lax,
+                Expires = DateTimeOffset.UtcNow.AddMinutes(60),
+                IsEssential = true,
+                Path = "/",
+            });
+
+            response.Cookies.Append("RefreshToken", token.RefreshToken ?? "", new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Lax,
+                Expires = DateTimeOffset.UtcNow.AddDays(7),
+                IsEssential = true,
+                Path = "/",
+            });
         }
     }
 }

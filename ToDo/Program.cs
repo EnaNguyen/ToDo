@@ -62,12 +62,29 @@ builder.Services.AddAuthentication(options =>
     };
     options.Events = new JwtBearerEvents
     {
+        OnMessageReceived = context =>
+        {
+            var accessToken = context.Request.Cookies["AccessToken"];
+
+            if (!string.IsNullOrEmpty(accessToken) &&
+                (context.Request.Path.StartsWithSegments("/api") )) 
+            {
+                context.Token = accessToken;
+            }
+
+            return Task.CompletedTask;
+        },
         OnTokenValidated = context =>
         {
             var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
-            logger.LogInformation("Token validated. User roles: {Roles}",
-                context.Principal?.Claims.Where(c => c.Type == ClaimTypes.Role)
-                                      .Select(c => c.Value));
+            logger.LogInformation("Token validated from cookie. User: {User}",
+                context.Principal?.Identity?.Name);
+            return Task.CompletedTask;
+        },
+
+        OnAuthenticationFailed = context =>
+        {
+            // Có thể log lỗi ở đây
             return Task.CompletedTask;
         }
     };
@@ -115,6 +132,7 @@ builder.Services.AddScoped<ITokenServices, TokenServices>();
 builder.Services.AddScoped<IAuthenticationServices, AuthenticationServices>();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddAutoMapper(config => { }
 , typeof(Program).Assembly
 );
