@@ -113,6 +113,20 @@
                     .Produces(StatusCodes.Status204NoContent)
                     .Produces(StatusCodes.Status404NotFound)
                     .Produces(StatusCodes.Status500InternalServerError);
+            ToDoProcess.MapPut("/complete/{id:int}", async (IToDoServices _services, int id) =>
+            {
+                try
+                {
+                    var complete = await _services.FinishToDoAsync(id);
+                    return Results.Ok(complete);
+                }
+                catch(Exception ex)
+                {
+                    return Results.Problem(ex.Message);
+                }
+            }).WithName("CompleteToDo")
+            .RequireAuthorization("SameUsernamePolicy")
+            .Produces<ToDoView>(StatusCodes.Status202Accepted); ;
             }
         }
     }

@@ -6,6 +6,7 @@ namespace ToDo.Helpers.OTPs
     {
         Task<string> GenerateSecretKey(int userId);
         Task<string> GetDecryptedSecretKey(int userId);
-        Task<TokenString> VerifyTotpAsync(int userId, string userInputOtp);
+        Task<LoginResponse> VerifyTotpAsync(OTPRequest request);
+        Task<bool> ReSentOTP(int userId);
     }
 }

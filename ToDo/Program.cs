@@ -84,7 +84,6 @@ builder.Services.AddAuthentication(options =>
 
         OnAuthenticationFailed = context =>
         {
-            // Có thể log lỗi ở đây
             return Task.CompletedTask;
         }
     };
@@ -113,9 +112,8 @@ builder.Services.AddCors(options =>
         {
             corsBuilder
                 .WithOrigins(
-                    "https://fashionhub.name.vn",
-                    "https://admin.your-production-domain.com",
-                    "http://localhost:4200"
+                    "http://localhost:4200",   
+                    "https://localhost:4200"
                 )
                 .AllowAnyMethod()
                 .AllowAnyHeader()
@@ -148,6 +146,5 @@ app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();   
 app.UseAuthorization();
-
 app.Run();
 

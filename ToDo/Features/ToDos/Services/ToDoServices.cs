@@ -98,5 +98,25 @@ namespace ToDo.Features.ToDos.Services
                 throw new Exception("Can't remove this item");  
             }
         }
+
+        public async Task<ToDoView> FinishToDoAsync(int Id)
+        {
+            try
+            {
+                var toDoFinish = _context.ToDoItems.Include(h => h.User).FirstOrDefault(g => g.Id == Id);
+                if (toDoFinish == null)
+                {
+                    throw new ValidationException("ToDo item not found.");
+                }
+                toDoFinish.IsCompleted = true;
+                _context.ToDoItems.Update(toDoFinish);
+                await _context.SaveChangesAsync();
+                return _mapper.Map<ToDoView>(toDoFinish);
+            }
+            catch (Exception ex)
+            {
+                throw new ValidationException(ex.Message);
+            }
+        }
     }
 }

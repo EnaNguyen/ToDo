@@ -5,7 +5,7 @@ using ToDo.Data.Entities;
 using ToDo.Features.Logins.DTO;
 using ToDo.Features.Logins.Services;
 using ToDo.Helpers.Tokens;
-
+using ToDo.Helpers.Emails;
 namespace ToDo.Helpers.OTPs
 {
     public class OTPServices : IOTPServices
@@ -13,11 +13,13 @@ namespace ToDo.Helpers.OTPs
         private readonly ApplicationDbContext _context;
         private readonly IDataProtector _protector;
         private readonly ITokenServices _tokenServices;
-        public OTPServices(ApplicationDbContext context, IDataProtectionProvider provider, ITokenServices tokenServices)
+        private readonly IEmailServices _emailServices;
+        public OTPServices(ApplicationDbContext context, IDataProtectionProvider provider, ITokenServices tokenServices, IEmailServices services)
         {
             _context = context;
             _protector = provider.CreateProtector("ToDoApp.TotpSecret.v1");
             _tokenServices = tokenServices;
+            _emailServices = services;
         }
 
         public async Task<string> GenerateSecretKey(int userId)
@@ -54,36 +56,66 @@ namespace ToDo.Helpers.OTPs
             }
             return _protector.Unprotect(user.SecretKey);
         }
-        public async Task<TokenString> VerifyTotpAsync(int userId, string userInputOtp)
+        public async Task<LoginResponse> VerifyTotpAsync(OTPRequest request)
         {
-            string plainSecret;
+            if(!string.IsNullOrEmpty(request.OTPCode))
+            {
+                string plainSecret;
+                try
+                {
+                    plainSecret = await GetDecryptedSecretKey(request.UserId);
+                }
+                catch
+                {
+                    throw;
+                }
+                var secretBytes = Base32Encoding.ToBytes(plainSecret);
+                var totp = new Totp(secretBytes, step: 300, mode: OtpHashMode.Sha1, totpSize: 6);
+                var user = _context.Users.FirstOrDefault(g => g.Id == request.UserId);
+                await _tokenServices.GenerateBothTokensAsync(user.Id, user.Username, user.Role);
+                bool verified = totp.VerifyTotp(
+                    request.OTPCode,
+                    out _,
+                    new VerificationWindow(previous: 1, future: 1)
+                );
+                if (verified)
+                {
+                    var TokenGen = await _tokenServices.GenerateBothTokensAsync(user.Id, user.Username, user.Role);
+                    _tokenServices.SetTokenInCookie(TokenGen);
+                    return new LoginResponse
+                    {
+                        Message = "OTP Verified Successfully",
+                        UserId = user.Id,
+                        FullName = user.FullName,
+                        Username = user.Username,
+                        Role = user.Role,
+                        Result = 1,
+                        
+                    };
+                }
+                else
+                {
+                    throw new Exception("Invalid OTP");
+                }
+            }
+            throw new Exception("Invalid OTP");
+        }
+        public async Task<bool> ReSentOTP(int userId)
+        {
             try
             {
-                plainSecret = await GetDecryptedSecretKey(userId);
+                var userAttempLogin = _context.Users.FirstOrDefault(p => p.Id == userId);
+                string plainSecret = await GetDecryptedSecretKey(userId);
+                var secretBytes = Base32Encoding.ToBytes(plainSecret);
+                var totp = new Totp(secretBytes, step: 300, mode: OtpHashMode.Sha1, totpSize: 6);
+                string currentOtp = totp.ComputeTotp();
+                await _emailServices.SendEmail(userAttempLogin.Email, currentOtp, "Xác thực 2 yếu tố qua Email");
+                return true;
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                return false;
             }
-            var secretBytes = Base32Encoding.ToBytes(plainSecret);
-            var totp = new Totp(secretBytes, step: 300, mode: OtpHashMode.Sha1, totpSize: 6);
-            var user = _context.Users.FirstOrDefault(g => g.Id == userId);
-            await _tokenServices.GenerateBothTokensAsync(user.Id, user.Username, user.Role);
-            bool verified =  totp.VerifyTotp(
-                userInputOtp,
-                out _,
-                new VerificationWindow(previous: 1, future: 1) 
-            );
-            if (verified)
-            {
-                var TokenGen = await _tokenServices.GenerateBothTokensAsync(user.Id, user.Username, user.Role);
-                _tokenServices.SetTokenInCookie(TokenGen);
-                return TokenGen;
-            }
-            else
-            {
-                throw new Exception("Invalid OTP");
-            }    
         }
     }
 }

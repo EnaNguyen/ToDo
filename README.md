@@ -1,0 +1,2 @@
+Vì em chạy local nên setup SSL khá phiền , anh/chị có test thì chạy debug trên http chứ đừng https nhé , không thì Token không lưu trên cookie được, 
+File appsetting.json em để public để anh chị không cần phải setup gì cả mà lấy key của e chạy.

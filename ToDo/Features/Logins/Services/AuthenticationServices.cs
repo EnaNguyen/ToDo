@@ -48,7 +48,7 @@ namespace ToDo.Features.Logins.Services
                         }    
                         string plainSecret = await _otpServices.GetDecryptedSecretKey(userAttempLogin.Id);
                         var secretBytes = Base32Encoding.ToBytes(plainSecret);
-                        var totp = new Totp(secretBytes, step: 300, mode: OtpHashMode.Sha1, totpSize: 6);
+                        var totp = new Totp(secretBytes, step: 86400, mode: OtpHashMode.Sha1, totpSize: 6);
                         string currentOtp = totp.ComputeTotp();
                         await _emailServices.SendEmail(userAttempLogin.Email, currentOtp, "Xác thực 2 yếu tố qua Email");
                         return new LoginResponse

@@ -43,22 +43,37 @@ namespace ToDo.Helpers.Tokens
         }
         public async Task<string> GenerateRefreshTokenAsync(int userId)
         {
+            var oldTokens = await _context.RefreshTokens
+                .Where(t => t.UserId == userId && !t.IsRevoked)
+                .ToListAsync();
+
+            foreach (var oldToken in oldTokens)
+            {
+                oldToken.IsRevoked = true;
+                oldToken.IsUsed = true;
+            }
+
             var randomBytes = RandomNumberGenerator.GetBytes(64);
             var refreshTokenString = Convert.ToBase64String(randomBytes);
+
             var refreshToken = new RefreshToken
             {
                 Token = refreshTokenString,
                 UserId = userId,
                 CreatedAt = DateTime.UtcNow,
-                ExpiresAt = DateTime.UtcNow.AddDays(int.Parse(_configuration["Jwt:RefreshTokenExpiresDays"] ?? "7")),
+                ExpiresAt = DateTime.UtcNow.AddDays(
+                    int.Parse(_configuration["Jwt:RefreshTokenExpiresDays"] ?? "7")
+                ),
             };
+
             _context.RefreshTokens.Add(refreshToken);
             await _context.SaveChangesAsync();
+
             return refreshTokenString;
         }
         public async Task<string?> ValidateAndRefreshTokenAsync(string refreshTokenString)
         {
-            var token = await _context.RefreshTokens
+            var token = await _context.RefreshTokens.Include(t=>t.User)
                 .FirstOrDefaultAsync(t => t.Token == refreshTokenString && !t.IsRevoked && !t.IsUsed && t.ExpiresAt > DateTime.UtcNow);
             if (token == null) return null;
             var user = await _context.Users.FindAsync(token.UserId);
@@ -88,9 +103,9 @@ namespace ToDo.Helpers.Tokens
             response.Cookies.Append("AccessToken", token.AccessToken ?? "", new CookieOptions
             {
                 HttpOnly = true,
-                Secure = true,
+                Secure = false,
                 SameSite = SameSiteMode.Lax,
-                Expires = DateTimeOffset.UtcNow.AddMinutes(60),
+                Expires = DateTimeOffset.UtcNow.AddDays(1),
                 IsEssential = true,
                 Path = "/",
             });
@@ -98,7 +113,7 @@ namespace ToDo.Helpers.Tokens
             response.Cookies.Append("RefreshToken", token.RefreshToken ?? "", new CookieOptions
             {
                 HttpOnly = true,
-                Secure = true,
+                Secure = false,
                 SameSite = SameSiteMode.Lax,
                 Expires = DateTimeOffset.UtcNow.AddDays(7),
                 IsEssential = true,
