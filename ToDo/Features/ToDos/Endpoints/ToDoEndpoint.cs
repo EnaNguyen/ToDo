@@ -113,20 +113,34 @@
                     .Produces(StatusCodes.Status204NoContent)
                     .Produces(StatusCodes.Status404NotFound)
                     .Produces(StatusCodes.Status500InternalServerError);
-            ToDoProcess.MapPut("/complete/{id:int}", async (IToDoServices _services, int id) =>
-            {
-                try
+                ToDoProcess.MapPut("/complete/{id:int}", async (IToDoServices _services, int id) =>
                 {
-                    var complete = await _services.FinishToDoAsync(id);
-                    return Results.Ok(complete);
-                }
-                catch(Exception ex)
+                    try
+                    {
+                        var complete = await _services.FinishToDoAsync(id);
+                        return Results.Ok(complete);
+                    }
+                    catch(Exception ex)
+                    {
+                        return Results.Problem(ex.Message);
+                    }
+                }).WithName("CompleteToDo")
+                .RequireAuthorization("SameUsernamePolicy")
+                .Produces<ToDoView>(StatusCodes.Status202Accepted);
+                ToDoProcess.MapPost("/filter", async (IToDoServices _services, [FromBody] ToDoFilter toDoFilter) =>
                 {
-                    return Results.Problem(ex.Message);
-                }
-            }).WithName("CompleteToDo")
-            .RequireAuthorization("SameUsernamePolicy")
-            .Produces<ToDoView>(StatusCodes.Status202Accepted); ;
+                    try
+                    {
+                        var filteredToDos = await _services.ToDoFilter(toDoFilter);
+                        return Results.Ok(filteredToDos);
+                    }
+                    catch (Exception ex)
+                    {
+                        return Results.Problem(ex.Message);
+                    }
+                }).WithName("FilterToDo")
+                .Produces<List<ToDoView>>(StatusCodes.Status200OK);
+                    
             }
         }
     }

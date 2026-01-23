@@ -3,6 +3,7 @@ using Azure;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.X509;
 using ToDo.Data.Entities;
 using ToDo.Features.ToDos.DTO;
 
@@ -114,6 +115,127 @@ namespace ToDo.Features.ToDos.Services
                 return _mapper.Map<ToDoView>(toDoFinish);
             }
             catch (Exception ex)
+            {
+                throw new ValidationException(ex.Message);
+            }
+        }
+        public async Task<List<ToDoView>> ToDoFilter (ToDoFilter toDoFilter)
+        {
+            try
+            {
+                var toDoQuery = _context.ToDoItems.Include(g=>g.User); 
+                List<ToDoView> toDoListResponse = new List<ToDoView>();
+                if(toDoFilter.Comboboxes!=null)
+                {
+                    foreach(var item in toDoFilter.Comboboxes)
+                    {
+                        if(!string.IsNullOrEmpty(item.Label)& !string.IsNullOrEmpty(item.Value))
+                        {
+                            if(item.Value!="true"&& item.Value!="false")
+                            {
+                                var toDoUnit = toDoQuery.Where(todo => EF.Property<string>(todo, item.Label).ToLower().Trim() == item.Value.ToLower().Trim()).ToList();
+                                toDoListResponse.AddRange(_mapper.Map<List<ToDoView>>(toDoUnit));
+                            }
+                            else
+                            {
+                                var toDoUnit = toDoQuery.Where(todo => EF.Property<bool>(todo, item.Label) == (item.Value == "true" ? true : false)).ToList();
+                                toDoListResponse.AddRange(_mapper.Map<List<ToDoView>>(toDoUnit));
+                            } 
+                                
+                        }    
+                    }    
+                }
+                if(!string.IsNullOrEmpty(toDoFilter.SearchInput))
+                {
+                    if(toDoListResponse!=null && toDoListResponse.Count()>0)
+                    {
+                        toDoListResponse = toDoListResponse.Where(g => g.Title.Contains(toDoFilter.SearchInput) || g.Description.Contains(toDoFilter.SearchInput)).ToList();
+                    }
+                    else
+                    {
+                        toDoListResponse.AddRange( _mapper.Map<List<ToDoView>> ((toDoQuery.Where(g => g.Title == toDoFilter.SearchInput || g.Description == toDoFilter.SearchInput).ToList())));
+                    }    
+                }
+                if (toDoFilter.SortOptions != null)
+                {
+                    var Target = new List<ToDoView>();
+                    if (toDoListResponse != null && toDoListResponse.Count() > 0)
+                    {
+                        Target = toDoListResponse;
+                    }
+                    else
+                    {
+                        Target = _mapper.Map<List<ToDoView>>(toDoQuery);
+                    }
+                    if (toDoFilter.SortOptions.type.Trim() == "date")
+                    {
+                        Target = Target.OrderByDescending(g => EF.Property<DateOnly>(g, toDoFilter.SortOptions.SortByTitle)).ToList();
+                    }
+                    else if (toDoFilter.SortOptions.type == "String")
+                    {
+                        Target = Target.OrderByDescending(g => EF.Property<string>(g, toDoFilter.SortOptions.SortByTitle)).ToList();
+                    }
+                    else
+                    {
+                        Target = Target.OrderByDescending(g => EF.Property<int>(g, toDoFilter.SortOptions.SortByTitle)).ToList();
+                    }
+                    if(!toDoFilter.SortOptions.IsDescending)
+                    {
+                        Target = Target.AsEnumerable().Reverse().ToList();
+                    }
+                    toDoListResponse = Target;
+                }
+                if(toDoFilter.RangeFilters!=null)
+                {
+                    var Target = new List<ToDoView>();
+                    if (toDoListResponse != null && toDoListResponse.Count() > 0)
+                    {
+                        Target = toDoListResponse;
+                    }
+                    else
+                    {
+                        Target = _mapper.Map<List<ToDoView>>(toDoQuery);
+                    }
+                    foreach(var item in toDoFilter.RangeFilters)
+                    {
+                        var propertyInfo = typeof(ToDoView).GetProperty(item.Target);
+                        if(propertyInfo!=null)
+                        {
+                            if (item.WhichType.ToLower().Trim() == "date")
+                            {
+                                Target = Target.Where(g => {
+                                    var value = propertyInfo.GetValue(g);
+                                    if(value is DateTime dateTime)
+                                    {
+                                        if (dateTime > DateTime.Parse(item.End) && dateTime < DateTime.Parse(item.Start))
+                                            return true;
+                                        else
+                                            return false;
+                                    }
+                                    return false;
+                                }).ToList();
+                            }
+                            if (item.WhichType.ToLower().Trim() == "number")
+                            {
+                                Target = Target.Where(g => {
+                                    var value = propertyInfo.GetValue(g);
+                                    if (value is int numberCompare)
+                                    {
+                                        if (numberCompare > int.Parse(item.End) && numberCompare < int.Parse(item.Start))
+                                            return true;
+                                        else
+                                            return false;
+                                    }
+                                    return false;
+                                }).ToList();
+                            }
+                        }    
+                    }
+                    toDoListResponse = Target;
+                }
+                return toDoListResponse;
+            }
+            catch(Exception ex)
             {
                 throw new ValidationException(ex.Message);
             }

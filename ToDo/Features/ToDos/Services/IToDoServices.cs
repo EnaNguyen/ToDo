@@ -10,5 +10,6 @@ namespace ToDo.Features.ToDos.Services
         Task<ToDoView> UpdateToDoAsync([FromBody] ToDoUpdateDTO toDoUpdateDTO);
         Task RemoveToDoAsync(int id);
         Task<ToDoView> FinishToDoAsync(int Id);
+        Task<List<ToDoView>> ToDoFilter(ToDoFilter toDoFilter);
     }
 }
