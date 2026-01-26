@@ -6,12 +6,13 @@
         public SortOptions? SortOptions { get; set; }
         public List<RangeFilter>? RangeFilters { get; set; }
         public List<Combobox>? Comboboxes { get; set; }
+        public Pagination? Pagination { get; set; }
     }
     public class SortOptions
     {
-        public string SortByTitle { get; set; } 
+        public string SortByTitle { get; set; }
         public bool IsDescending { get; set; }
-        public string type { get; set; }
+        public string WhichType { get; set; }
     }
     public class RangeFilter
     {
@@ -24,5 +25,10 @@
     {
         public string Value { get; set; }
         public string Label { get; set; }
+    }
+    public class Pagination
+    {
+        public int Value { get; set; }
+        public int ItemsPerPage { get; set; }
     }
 }

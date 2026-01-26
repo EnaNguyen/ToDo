@@ -4,6 +4,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Asn1.X509;
+using System.Net.WebSockets;
 using ToDo.Data.Entities;
 using ToDo.Features.ToDos.DTO;
 
@@ -167,11 +168,11 @@ namespace ToDo.Features.ToDos.Services
                     {
                         Target = _mapper.Map<List<ToDoView>>(toDoQuery);
                     }
-                    if (toDoFilter.SortOptions.type.Trim() == "date")
+                    if (toDoFilter.SortOptions.WhichType.Trim() == "date")
                     {
                         Target = Target.OrderByDescending(g => EF.Property<DateOnly>(g, toDoFilter.SortOptions.SortByTitle)).ToList();
                     }
-                    else if (toDoFilter.SortOptions.type == "String")
+                    else if (toDoFilter.SortOptions.WhichType == "String")
                     {
                         Target = Target.OrderByDescending(g => EF.Property<string>(g, toDoFilter.SortOptions.SortByTitle)).ToList();
                     }
@@ -232,6 +233,16 @@ namespace ToDo.Features.ToDos.Services
                         }    
                     }
                     toDoListResponse = Target;
+                }
+                if(toDoFilter.Pagination!=null)
+                {
+                    int TotalItems = toDoListResponse.Count();
+                    int ItemPerPage = toDoFilter.Pagination.ItemsPerPage;
+                    int TotalPages = TotalItems / ItemPerPage;
+                    int Begin = toDoFilter.Pagination.Value * ItemPerPage;
+                    int End = Begin + ItemPerPage <= TotalItems ? ItemPerPage : TotalItems - Begin;
+                    var Result = toDoListResponse.Slice(Begin, End);
+                    toDoListResponse = Result;
                 }
                 return toDoListResponse;
             }
