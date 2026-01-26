@@ -29,7 +29,7 @@
     }
     public class Pagination
     {
-        public int Value { get; set; }
+        public int IndexPage { get; set; }
         public int ItemsPerPage { get; set; }
     }
     public class Selections

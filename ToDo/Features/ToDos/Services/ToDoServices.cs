@@ -126,6 +126,7 @@ namespace ToDo.Features.ToDos.Services
             {
                 var toDoQuery = _context.ToDoItems.Include(g=>g.User); 
                 List<ToDoView> toDoListResponse = new List<ToDoView>();
+                bool Searched = false;
                 if(toDoFilter.Comboboxes!=null)
                 {
                     foreach(var item in toDoFilter.Comboboxes)
@@ -141,14 +142,15 @@ namespace ToDo.Features.ToDos.Services
                             {
                                 var toDoUnit = toDoQuery.Where(todo => EF.Property<bool>(todo, item.Label) == (item.Value == "true" ? true : false)).ToList();
                                 toDoListResponse.AddRange(_mapper.Map<List<ToDoView>>(toDoUnit));
-                            } 
+                            }
+                            Searched = true;
                                 
                         }    
                     }    
                 }
                 if(!string.IsNullOrEmpty(toDoFilter.SearchInput))
                 {
-                    if(toDoListResponse!=null && toDoListResponse.Count()>0)
+                    if(Searched)
                     {
                         toDoListResponse = toDoListResponse.Where(g => g.Title.Contains(toDoFilter.SearchInput) || g.Description.Contains(toDoFilter.SearchInput)).ToList();
                     }
@@ -160,7 +162,7 @@ namespace ToDo.Features.ToDos.Services
                 if (toDoFilter.SortOptions != null)
                 {
                     var Target = new List<ToDoView>();
-                    if (toDoListResponse != null && toDoListResponse.Count() > 0)
+                    if (Searched)
                     {
                         Target = toDoListResponse;
                     }
@@ -189,7 +191,7 @@ namespace ToDo.Features.ToDos.Services
                 if(toDoFilter.RangeFilters!=null)
                 {
                     var Target = new List<ToDoView>();
-                    if (toDoListResponse != null && toDoListResponse.Count() > 0)
+                    if (Searched)
                     {
                         Target = toDoListResponse;
                     }
@@ -208,7 +210,7 @@ namespace ToDo.Features.ToDos.Services
                                     var value = propertyInfo.GetValue(g);
                                     if(value is DateTime dateTime)
                                     {
-                                        if (dateTime > DateTime.Parse(item.End) && dateTime < DateTime.Parse(item.Start))
+                                        if (dateTime <= DateTime.Parse(item.End) && dateTime >= DateTime.Parse(item.Start))
                                             return true;
                                         else
                                             return false;
@@ -237,7 +239,7 @@ namespace ToDo.Features.ToDos.Services
                 if(toDoFilter.Selections!=null)
                 {
                     var Target = new List<ToDoView>();
-                    if (toDoListResponse != null && toDoListResponse.Count() > 0)
+                    if (Searched)
                     {
                         Target = toDoListResponse;
                     }
@@ -261,15 +263,24 @@ namespace ToDo.Features.ToDos.Services
                         }
                     }
                     toDoListResponse = Target;
-                }    
-                if(toDoFilter.Pagination!=null)
+                }
+                if (toDoFilter.Pagination != null)
                 {
-                    int TotalItems = toDoListResponse.Count();
+                    var Target = new List<ToDoView>();
+                    if (Searched)
+                    {
+                        Target = toDoListResponse;
+                    }
+                    else
+                    {
+                        Target = _mapper.Map<List<ToDoView>>(toDoQuery);
+                    }    
+                    int TotalItems = Target.Count();
                     int ItemPerPage = toDoFilter.Pagination.ItemsPerPage;
                     int TotalPages = TotalItems / ItemPerPage;
-                    int Begin = toDoFilter.Pagination.Value * ItemPerPage;
+                    int Begin = (toDoFilter.Pagination.IndexPage -1) * ItemPerPage;
                     int End = Begin + ItemPerPage <= TotalItems ? ItemPerPage : TotalItems - Begin;
-                    var Result = toDoListResponse.Slice(Begin, End);
+                    var Result = Target.Slice(Begin, End);
                     toDoListResponse = Result;
                 }
                 return toDoListResponse;
