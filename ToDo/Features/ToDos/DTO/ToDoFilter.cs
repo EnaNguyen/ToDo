@@ -6,6 +6,7 @@
         public SortOptions? SortOptions { get; set; }
         public List<RangeFilter>? RangeFilters { get; set; }
         public List<Combobox>? Comboboxes { get; set; }
+        public List<Selections>? Selections { get; set; }
         public Pagination? Pagination { get; set; }
     }
     public class SortOptions
@@ -30,5 +31,10 @@
     {
         public int Value { get; set; }
         public int ItemsPerPage { get; set; }
+    }
+    public class Selections
+    {
+        public string Value { get; set; }
+        public string Target { get; set; }
     }
 }

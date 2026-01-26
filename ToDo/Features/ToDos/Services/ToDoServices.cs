@@ -154,7 +154,7 @@ namespace ToDo.Features.ToDos.Services
                     }
                     else
                     {
-                        toDoListResponse.AddRange( _mapper.Map<List<ToDoView>> ((toDoQuery.Where(g => g.Title == toDoFilter.SearchInput || g.Description == toDoFilter.SearchInput).ToList())));
+                        toDoListResponse.AddRange( _mapper.Map<List<ToDoView>> ((toDoQuery.Where(g => g.Title.Contains(toDoFilter.SearchInput) || g.Description.Contains( toDoFilter.SearchInput)).ToList())));
                     }    
                 }
                 if (toDoFilter.SortOptions != null)
@@ -234,6 +234,34 @@ namespace ToDo.Features.ToDos.Services
                     }
                     toDoListResponse = Target;
                 }
+                if(toDoFilter.Selections!=null)
+                {
+                    var Target = new List<ToDoView>();
+                    if (toDoListResponse != null && toDoListResponse.Count() > 0)
+                    {
+                        Target = toDoListResponse;
+                    }
+                    else
+                    {
+                        Target = _mapper.Map<List<ToDoView>>(toDoQuery);
+                    }
+                    foreach(var item in toDoFilter.Selections)               
+                    {
+                        var propertyInfo = typeof(ToDoView).GetProperty(item.Target);
+                        if(propertyInfo!=null)
+                        {
+                            Target = Target.Where(g => {
+                                var value = propertyInfo.GetValue(g);
+                                if(value is string strValue)
+                                {
+                                    return item.Value==value;
+                                }
+                                return false;
+                            }).ToList();
+                        }
+                    }
+                    toDoListResponse = Target;
+                }    
                 if(toDoFilter.Pagination!=null)
                 {
                     int TotalItems = toDoListResponse.Count();
