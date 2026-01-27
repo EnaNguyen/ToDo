@@ -7,6 +7,7 @@ using Org.BouncyCastle.Asn1.X509;
 using System.Net.WebSockets;
 using ToDo.Data.Entities;
 using ToDo.Features.ToDos.DTO;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ToDo.Features.ToDos.Services
 {
@@ -120,20 +121,20 @@ namespace ToDo.Features.ToDos.Services
                 throw new ValidationException(ex.Message);
             }
         }
-        public async Task<List<ToDoView>> ToDoFilter (ToDoFilter toDoFilter)
+        public async Task<ToDoResponse> ToDoFilter (ToDoFilter toDoFilter)
         {
             try
             {
-                var toDoQuery = _context.ToDoItems.Include(g=>g.User); 
+                var toDoQuery = _context.ToDoItems.Include(g => g.User);
                 List<ToDoView> toDoListResponse = new List<ToDoView>();
                 bool Searched = false;
-                if(toDoFilter.Comboboxes!=null)
+                if (toDoFilter.Comboboxes != null)
                 {
-                    foreach(var item in toDoFilter.Comboboxes)
+                    foreach (var item in toDoFilter.Comboboxes)
                     {
-                        if(!string.IsNullOrEmpty(item.Label)& !string.IsNullOrEmpty(item.Value))
+                        if (!string.IsNullOrEmpty(item.Label) & !string.IsNullOrEmpty(item.Value))
                         {
-                            if(item.Value!="true"&& item.Value!="false")
+                            if (item.Value != "true" && item.Value != "false")
                             {
                                 var toDoUnit = toDoQuery.Where(todo => EF.Property<string>(todo, item.Label).ToLower().Trim() == item.Value.ToLower().Trim()).ToList();
                                 toDoListResponse.AddRange(_mapper.Map<List<ToDoView>>(toDoUnit));
@@ -144,20 +145,21 @@ namespace ToDo.Features.ToDos.Services
                                 toDoListResponse.AddRange(_mapper.Map<List<ToDoView>>(toDoUnit));
                             }
                             Searched = true;
-                                
-                        }    
-                    }    
+
+                        }
+                    }
                 }
-                if(!string.IsNullOrEmpty(toDoFilter.SearchInput))
+                if (!string.IsNullOrEmpty(toDoFilter.SearchInput))
                 {
-                    if(Searched)
+                    if (Searched)
                     {
                         toDoListResponse = toDoListResponse.Where(g => g.Title.Contains(toDoFilter.SearchInput) || g.Description.Contains(toDoFilter.SearchInput)).ToList();
                     }
                     else
                     {
-                        toDoListResponse.AddRange( _mapper.Map<List<ToDoView>> ((toDoQuery.Where(g => g.Title.Contains(toDoFilter.SearchInput) || g.Description.Contains( toDoFilter.SearchInput)).ToList())));
-                    }    
+                        toDoListResponse.AddRange(_mapper.Map<List<ToDoView>>((toDoQuery.Where(g => g.Title.Contains(toDoFilter.SearchInput) || g.Description.Contains(toDoFilter.SearchInput)).ToList())));
+                    }
+                    Searched = true;
                 }
                 if (toDoFilter.SortOptions != null)
                 {
@@ -182,13 +184,14 @@ namespace ToDo.Features.ToDos.Services
                     {
                         Target = Target.OrderByDescending(g => EF.Property<int>(g, toDoFilter.SortOptions.SortByTitle)).ToList();
                     }
-                    if(!toDoFilter.SortOptions.IsDescending)
+                    if (!toDoFilter.SortOptions.IsDescending)
                     {
                         Target = Target.AsEnumerable().Reverse().ToList();
                     }
                     toDoListResponse = Target;
+                    Searched = true;
                 }
-                if(toDoFilter.RangeFilters!=null)
+                if (toDoFilter.RangeFilters != null)
                 {
                     var Target = new List<ToDoView>();
                     if (Searched)
@@ -199,16 +202,17 @@ namespace ToDo.Features.ToDos.Services
                     {
                         Target = _mapper.Map<List<ToDoView>>(toDoQuery);
                     }
-                    foreach(var item in toDoFilter.RangeFilters)
+                    foreach (var item in toDoFilter.RangeFilters)
                     {
                         var propertyInfo = typeof(ToDoView).GetProperty(item.Target);
-                        if(propertyInfo!=null)
+                        if (propertyInfo != null)
                         {
                             if (item.WhichType.ToLower().Trim() == "date")
                             {
-                                Target = Target.Where(g => {
+                                Target = Target.Where(g =>
+                                {
                                     var value = propertyInfo.GetValue(g);
-                                    if(value is DateTime dateTime)
+                                    if (value is DateTime dateTime)
                                     {
                                         if (dateTime <= DateTime.Parse(item.End) && dateTime >= DateTime.Parse(item.Start))
                                             return true;
@@ -220,7 +224,8 @@ namespace ToDo.Features.ToDos.Services
                             }
                             if (item.WhichType.ToLower().Trim() == "number")
                             {
-                                Target = Target.Where(g => {
+                                Target = Target.Where(g =>
+                                {
                                     var value = propertyInfo.GetValue(g);
                                     if (value is int numberCompare)
                                     {
@@ -232,11 +237,12 @@ namespace ToDo.Features.ToDos.Services
                                     return false;
                                 }).ToList();
                             }
-                        }    
+                        }
                     }
                     toDoListResponse = Target;
+                    Searched = true;
                 }
-                if(toDoFilter.Selections!=null)
+                if (toDoFilter.Selections != null)
                 {
                     var Target = new List<ToDoView>();
                     if (Searched)
@@ -247,43 +253,72 @@ namespace ToDo.Features.ToDos.Services
                     {
                         Target = _mapper.Map<List<ToDoView>>(toDoQuery);
                     }
-                    foreach(var item in toDoFilter.Selections)               
+                    foreach (var item in toDoFilter.Selections)
                     {
                         var propertyInfo = typeof(ToDoView).GetProperty(item.Target);
-                        if(propertyInfo!=null)
+                        if (propertyInfo != null)
                         {
-                            Target = Target.Where(g => {
+                            Target = Target.Where(g =>
+                            {
                                 var value = propertyInfo.GetValue(g);
-                                if(value is string strValue)
+                                if (value is string strValue)
                                 {
-                                    return item.Value==value;
+                                    return item.Value == value;
                                 }
                                 return false;
                             }).ToList();
                         }
                     }
                     toDoListResponse = Target;
+                    Searched = true;
                 }
-                if (toDoFilter.Pagination != null)
+                var filterOutList = new List<ToDoView>();
+                //Pagination
+                List<ToDoView> itemInPage = new List<ToDoView>();
+                if (Searched)
                 {
-                    var Target = new List<ToDoView>();
-                    if (Searched)
+                    filterOutList = toDoListResponse;
+                }
+                else
+                {
+                    filterOutList = _mapper.Map<List<ToDoView>>(toDoQuery);
+                }    
+                int MaxItem = filterOutList.Count();
+                int itemPerPage = toDoFilter.ItemPerPage.GetValueOrDefault();
+                int pageIndex = toDoFilter.PageIndex.GetValueOrDefault();
+                if (toDoFilter.ItemPerPage!=null && toDoFilter.PageIndex!=null)
+                {
+                    int Begin = (pageIndex - 1) * itemPerPage;
+                    int End = Begin;
+                    if(MaxItem>= Begin+itemPerPage)
                     {
-                        Target = toDoListResponse;
+                        End = Begin + itemPerPage;
                     }
                     else
+                    {                       
+                        End = MaxItem;
+                    }
+                    var xyz =  new ToDoResponse
                     {
-                        Target = _mapper.Map<List<ToDoView>>(toDoQuery);
-                    }    
-                    int TotalItems = Target.Count();
-                    int ItemPerPage = toDoFilter.Pagination.ItemsPerPage;
-                    int TotalPages = TotalItems / ItemPerPage;
-                    int Begin = (toDoFilter.Pagination.IndexPage -1) * ItemPerPage;
-                    int End = Begin + ItemPerPage <= TotalItems ? ItemPerPage : TotalItems - Begin;
-                    var Result = Target.Slice(Begin, End);
-                    toDoListResponse = Result;
+                        ToDoItems = filterOutList,
+                        ItemInPage = filterOutList.GetRange(Begin, End - Begin),
+                        TotalPages = (int)Math.Ceiling((double)MaxItem / itemPerPage),
+                        TotalItems = MaxItem,
+                        ItemsPerPage = itemPerPage,
+                        PageIndex = pageIndex
+                    };
+                    return xyz;
                 }
-                return toDoListResponse;
+                var abc = new ToDoResponse
+                {
+                    ToDoItems = filterOutList,
+                    ItemInPage = filterOutList,
+                    TotalItems = filterOutList.Count(),
+                    TotalPages = (int)(MaxItem /itemPerPage)+1,
+                    ItemsPerPage = itemPerPage,
+                    PageIndex = pageIndex
+                };
+                return abc;
             }
             catch(Exception ex)
             {
